@@ -1,0 +1,68 @@
+.logo_header {
+    width: 170px;
+}
+.card-header {
+    background-color: #00ACED;
+}
+.card-body {
+    padding: 0 !important;
+    border-radius: 8px;
+    display: flex;
+}
+.dash-area {
+    width: 1140px !important;
+}
+.sidemenu {
+    background-color: #00ACED;
+    color: #FFF;
+    width: 280px;
+    height: 700px;
+    padding-top: 10px;
+    border-radius: 8px 0 0 8px;
+}
+.sidemenu ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sidemenu ul li {
+    color: #FFF;
+    font-size: 16px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding: 6px 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+.sidemenu ul li a{
+    color: #FFF;
+    text-decoration: none;
+}
+.active {
+    color: #00ACED !important;
+    background-color: #FFF;
+    margin-left: 10px;
+    width: 270px !important;
+    border-radius: 18px 0 0 18px;
+}
+
+.row{
+    display: flex;
+}
+
+.card-list{
+    padding: 1.25rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.card-border{
+    box-shadow: 0px 0px 30px -10px #3f9ae5  !important;
+    margin-top: 10px !important;
+}
