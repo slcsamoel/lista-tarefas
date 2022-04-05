@@ -24,12 +24,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Rotas funcionario
-Route::get('/funcionario/{id}', 'FuncionarioController@show')->name('funcionario');
-
-//Rotas Premios
-Route::get('/premios','PremioController@index')->name('premios');
-Route::post('/premio','PremioController@store')->name('premios-store');
+//Rotas de Tasks
+Route::resource('tasks', TaskController::class);
 
 
 

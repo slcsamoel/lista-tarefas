@@ -2,29 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Task;
+use Egulias\EmailValidator\Warning\TLD;
+use Exception;
 use Illuminate\Http\Request;
+use Redirect,Response;
 
 class TaskController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -34,7 +22,17 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+            $taskID = $request->task_id;
+
+            $task = Task::updateOrCreate(['id' => $taskID],
+                        ['descricao' => $request->descricao, 'user_id' => $request->user_id]);
+
+            $task->data_criacao = date('d/m/Y', strtotime($task->created_at));
+            $task->usuario = $task->user->name;
+
+            return response()->json($task);
+
     }
 
     /**
@@ -45,7 +43,12 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $where = array('id' => $id);
+        $Task  = Task::where($where)->first();
+
+        return response()->json($Task);
+
     }
 
     /**
@@ -56,7 +59,12 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $where = array('id' => $id);
+        $Task  = Task::where($where)->first();
+
+        return response()->json($Task);
+
     }
 
     /**
@@ -79,6 +87,26 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        try {
+
+            $task = Task::where('id',$id)->delete();
+            $resposta = [
+                'status'=> 'success',
+                'data'  => $task
+            ];
+
+            return response()->json($resposta);
+
+           } catch (Exception $e) {
+
+            $resposta = [
+                'status'=> 'error',
+                'erro'  => $e
+            ];
+
+            return response()->json($resposta);
+        }
+
     }
 }
